@@ -23,7 +23,9 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm ci  
+        run: npm ci
+      - name: files Verify
+        run: ls -la
   
   test:
     runs-on: ubuntu-latest
@@ -32,7 +34,7 @@ jobs:
       - name: Output event data
         run: echo "${{ toJSON(github.event) }}"
       - name: Get code
-        uses: actions/checkout@v3
+        uses: actions/dependencies
       #- name: Install dependencies
       #  run: npm ci
       - name: Test code
