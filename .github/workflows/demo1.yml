@@ -27,7 +27,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: modules-files
-          path: node_modules/
+          path: node_modules
           retention-days: 1
   
   test:
