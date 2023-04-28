@@ -2,7 +2,7 @@ name: Events Demo 1
 on: 
   pull_request:
     types:
-      - opened
+      - opened    #se ejecutara el pipeline si se abre un pull_request
     branches:
       - main
       - 'dev-*'   #dev-new dev-this-is-new
