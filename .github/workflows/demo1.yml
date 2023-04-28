@@ -11,23 +11,44 @@ on:
   push:
     branches:
       - main
+      - dev
       - 'dev-*'   #dev-new dev-this-is-new
       - 'feat/**' # feat/new feat/new/button 
     paths-ignore:
       - '.github/workflows/*'    
 jobs:
-  deploy:
+  install:
     runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci  
+  
+  test:
+    runs-on: ubuntu-latest
+    needs: install
     steps:
       - name: Output event data
         run: echo "${{ toJSON(github.event) }}"
       - name: Get code
         uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
+      #- name: Install dependencies
+      #  run: npm ci
       - name: Test code
         run: npm run test
       - name: Build code
         run: npm run build
       - name: Deploy project
         run: echo "Deploying..."
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Build code  
+        run: |
+              npm run build
+              ls -la
