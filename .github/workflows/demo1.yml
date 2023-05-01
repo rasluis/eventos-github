@@ -18,7 +18,7 @@ jobs:
   install:
     env:
       prueba_secrets: ${{ secrets.NOMBRE_SECRET }}
-      variable_desde_repository: ${{ env.PRUEBA_VARIABLE_AMBIENTE }}
+      variable_desde_repository: ${{ vars.PRUEBA_VARIABLE_AMBIENTE }}
     runs-on: ubuntu-latest
     steps:
       - name: prueba de secretos
