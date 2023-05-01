@@ -17,11 +17,14 @@ on:
 jobs:
   install:
     env:
-      prueba-secrets: ${{ secrets.NOMBRE_SECRET }}
+      prueba_secrets: ${{ secrets.NOMBRE_SECRET }}
+      variable_desde_repository: ${{ env.PRUEBA_VARIABLE_AMBIENTE }}
     runs-on: ubuntu-latest
     steps:
       - name: prueba de secretos
-        run: echo "${{env.prueba-secrets}}"
+        run: echo "${{env.prueba_secrets}}"
+      - name: prueba de variables
+        run: echo "${{env.variable_desde_repository}}"  
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
