@@ -16,9 +16,10 @@ on:
       - 'feat/**' # feat/new feat/new/button    
 jobs:
   install:
+    environment: desarrollo  # environment creado desde el repositorio de codigo, en la seccion de environments
     env:
-      prueba_secrets: ${{ secrets.NOMBRE_SECRET }}
-      variable_desde_repository: ${{ vars.PRUEBA_VARIABLE_AMBIENTE }}
+      prueba_secrets: ${{ secrets.NOMBRE_SECRET }}   #forma de llamar secretos creados en github a nivel de repositorio
+      variable_desde_repository: ${{ vars.PRUEBA_VARIABLE_AMBIENTE }}  #forma de llamar variables creadas a nivel de repositorio
     runs-on: ubuntu-latest
     steps:
       - name: prueba de secretos
