@@ -56,7 +56,12 @@ jobs:
       - name: files verify
         run: ls -la    
       - name: Test code
+        id: skip_test_failure
         run: npm run test
+      - name: probando condicional de step
+        if: failure() && steps.skip_test_failure.outcome == 'failure'
+        run: echo "se corre este comando sin importar que falle el step de test"
+          
 
   build:
     runs-on: ubuntu-latest
