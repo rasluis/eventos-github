@@ -1,0 +1,5 @@
+name: Llamado de otro workflow
+on: push
+jobs:
+  call-workflow-passing-data:
+     uses: github.com/rasluis/workflows/.github/workflows/pruebas.yml@main
